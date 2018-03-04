@@ -1,0 +1,42 @@
+<HTML>
+  <HEAD>
+    <TITLE>Algortimo Dijsktra</TITLE>
+  </HEAD>
+  <BODY>
+  </BODY>
+</HTML>
+<script src="graph.js" ></script>
+<script>
+var vertex_s = Vertex("s");
+var vertex_u = Vertex("u");
+var vertex_v = Vertex("v");
+var vertex_x = Vertex("x");
+var vertex_y = Vertex("y");
+vertex_s.edgeList.push({ destiny : vertex_u, value : 10  });
+vertex_s.edgeList.push({ destiny : vertex_x, value : 5 });
+
+vertex_u.edgeList.push({ destiny : vertex_v, value : 1 });
+vertex_u.edgeList.push({ destiny : vertex_x, value : 3 });
+
+vertex_v.edgeList.push({ destiny : vertex_y, value : 6 });
+
+vertex_x.edgeList.push({ destiny : vertex_u, value : 2 });
+vertex_x.edgeList.push({ destiny : vertex_v, value : 9 });
+vertex_x.edgeList.push({ destiny : vertex_y, value : 2 });
+
+vertex_y.edgeList.push({ destiny : vertex_v, value : 4 });
+vertex_y.edgeList.push({ destiny : vertex_s, value : 7 });
+var gr= Graph();
+gr.addVertex(vertex_s);
+gr.addVertex(vertex_u);
+gr.addVertex(vertex_v);
+gr.addVertex(vertex_x);
+gr.addVertex(vertex_y);
+var values = gr.lessCostPath("s","v");
+console.log("Path value: " + values.totalCost);
+console.log("Full path: ");
+for (var i = 0, j = values.path.length; i < j; i++)
+  console.log(values.path[i].name + " -> ");
+
+
+</script>
